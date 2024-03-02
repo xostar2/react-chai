@@ -1,18 +1,27 @@
-import { useState } from 'react'
-
+import { useState,useCallback } from 'react'
 import './App.css'
 
 function App() {
 
-  let counter=5
+  let [counter,setCounter]=useState(15)
 
+  //counter=15
   const addValue = () => {
-    counter++
-    //console.log(counter);
+    if(counter<20){
+    console.log("clicked",counter);
+    counter=counter+1
+    setCounter(counter)
+    }
+    //setCounter(counter+1)
+
   }
   const removeValue = () => {
-    counter--
-    //console.log(counter);
+    
+    if(counter>0){
+      counter=counter-1
+    setCounter(counter)
+    console.log("remove counter",counter);
+    }
   }
 
   return (

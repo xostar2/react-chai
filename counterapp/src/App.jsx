@@ -9,18 +9,26 @@ function App() {
   const addValue = () => {
     if(counter<20){
     console.log("clicked",counter);
-    counter=counter+1
-    setCounter(counter)
+    
+    // setCounter(counter+1)  in this value will not update after first lime
+    // setCounter(counter+1)
+    // setCounter(counter+1)
+    // setCounter(counter+1)
+    setCounter((prevCounter)=>prevCounter+1)//but when it came through an call back because setcounter take a call back behind the hood so then it change according to the previous state
+    setCounter((prevCounter)=>prevCounter+1)
+    setCounter((prevCounter)=>prevCounter+1)
+    setCounter((prevCounter)=>prevCounter+1)
+
     }
-    //setCounter(counter+1)
+    
 
   }
   const removeValue = () => {
     
     if(counter>0){
-      counter=counter-1
-    setCounter(counter)
+      
     console.log("remove counter",counter);
+    setCounter(counter-1)
     }
   }
 

@@ -16,13 +16,13 @@ function InputBox({
     // https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json
     const amountInput=useId();//use for tab the html elements
     return (
-        <div className={`bg-white p-3 rounded-lg text-sm flex `}>
+        <div className={`bg-white p-3 rounded-lg text-sm flex ${className} `}>
             <div className="w-1/2">
                 <label htmlFor={amountInput}  className="text-black/40 mb-2 inline-block">
                     {label}
                 </label>
                 <input
-                    if={amountInput}
+                    id={amountInput}
                     className="outline-none w-full bg-transparent py-1.5"
                     type="number"
                     placeholder="Amount"
@@ -46,9 +46,9 @@ function InputBox({
 
                 >
                     
-                {currencyoptions.map((curr)=> (
-                    <option key={curr} value={curr}>
-                        {curr}
+                {currencyoptions.map((currency)=> (
+                    <option key={currency} value={currency}>
+                        {currency}
                     </option>
                 ))}
                 

@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import { InputBox } from './components'
-import './App.css'
 import useCurrencyInfo from './hooks/useCurrInfo'
-
+//https://github.com/hiteshchoudhary/chai-aur-react/blob/main/currency.md
 function App() {
   //const [count, setCount] = useState(0)
  //custom hooks
 
  const [amount,setAmount] =useState(0);
- const [from,setfrom]=useState("USD")
- const [to,setto]=useState("INR")
+ const [from,setfrom]=useState("usd")
+ const [to,setto]=useState("inr")
  const [convertedAmount,setconvertedAmount]=useState(0)
 
  const currencyInfo=useCurrencyInfo(from);
@@ -22,8 +21,11 @@ function App() {
    setAmount(convertedAmount)
  }
 
- const convert=()=> setconvertedAmount(amount*currencyInfo[to])
- return (
+ const convert = () => {
+    return setconvertedAmount(amount*currencyInfo[to])}
+ 
+ 
+    return (
   <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
@@ -38,15 +40,15 @@ function App() {
                       convert();
                      
                   }}
-              >
+            >
                   <div className="w-full mb-1">
                       <InputBox
                           label="From"
                           amount={amount}
                           currencyoptions={options}
-                          oncurrencyChange={(curr)=>{
+                          oncurrencyChange={(currency)=>
                             setAmount(amount)
-                          }}
+                          }
                           selectcurrency={from}
                           onamountchange={(amount)=> setAmount(amount)}
 
@@ -66,16 +68,16 @@ function App() {
                   <div className="w-full mt-1 mb-4">
                       <InputBox
                           label="To"
-                          amount={convertedAmountt}
+                          amount={convertedAmount}
                           currencyoptions={options}
-                          oncurrencyChange={(curr)=>setto(curr)}
-                          selectcurrency={from}
+                          oncurrencyChange={(currency)=>setto(currency)}
+                          selectcurrency={to}
                           amountdisable
                           
                       />
                   </div>
                   <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
-                      Convert {from.toUpperCase} to {to.toUpperCase}
+                      Convert {from.toUpperCase()} to {to.toUpperCase()}
                   </button>
               </form>
           </div>
